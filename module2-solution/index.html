@@ -4,6 +4,8 @@
     <title>Shopping List Check Off</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
     <style>
       .emptyMessage {
         font-weight: bold;
@@ -23,23 +25,38 @@
     </style>
   </head>
 <body>
-  <div class="container">
-  <h1>Shopping List Check Off</h1>
 
-  <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6">
+    <div ng-controller="ToBuyShoppingController as itemsToBuy">
+        <h3>Shopping list</h3>
+        <h4 ng-if="itemsToBuy.emptyList">Everything is bought!</h4>
+        <ul>
+            <li ng-repeat="item in itemsToBuy.items">
+                <span>Buy {{ ::item.quantity}} {{ ::item.name }}</span><button ng-click="itemsToBuy.buyItem($index)">Bought</button>
+            </li>
+        </ul>
+    </div>
+    <div ng-controller="AlreadyBoughtShoppingController as itemsBought">
+        <h3>Bought</h3>
+        <h4 ng-if="itemsBought.items.length === 1">{{itemsBought.items[0].message}}</h4>
+        <ul>
+            <li ng-if="$index != 0" ng-repeat="item in itemsBought.items">
+                <span>Bought {{ ::item.quantity}} {{ ::item.name }}</span>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="col-md-6" id="buylist" ng-controller='ToBuyShoppingController as buylist'>
      <h2>To Buy:</h2>
      <ul>
        <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
        <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
      <div class="emptyMessage">Everything is bought!</div>
-    </div>
+    </div> -->
 
     <!-- Already Bought List -->
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
      <h2>Already Bought:</h2>
      <ul>
        <li>Bought 10 cookies</li>
@@ -47,7 +64,8 @@
      <div class="emptyMessage">Nothing bought yet.</div>
     </div>
   </div>
-</div>
+ -->
+
 
 </body>
 </html>
