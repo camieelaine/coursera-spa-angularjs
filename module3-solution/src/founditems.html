@@ -1,0 +1,15 @@
+<br/><br/><br/>
+<div ng-if="found.items.length > 0">
+  <ul>
+    <li ng-repeat="item in found.items">
+      {{ item.name }} ({{ item.short_name }}) :
+      {{ item.price_small | currency }} ({{item.small_portion_name}}) /
+      {{ item.price_large | currency }} ({{item.large_portion_name}}) |
+      {{ item.description }} &nbsp;&nbsp;&nbsp;
+      <button ng-click="found.onRemove({index: $index});">Don't want this one!</button>
+    </li>
+  </ul>
+</div>
+<div ng-if="found.items.length == 0">
+  <span>Nothing found</span>
+</div>
