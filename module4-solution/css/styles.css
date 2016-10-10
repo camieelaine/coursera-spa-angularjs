@@ -2,15 +2,24 @@ body {
   font-size: 1.2em;
 }
 
-div.tabs > a, div.tabs > button {
-  margin-right: 10px;
+
+body {
   font-size: 1.2em;
+  margin: 10px 60px;
 }
 
-div.tabs {
-  margin-bottom: 10px;
+h1 {
+  text-align: center;
 }
 
-.activeTab {
+.link {
+  text-decoration: underline;
+  color: green;
+  cursor: pointer;
+}
+
+.link-item:hover {
+  cursor: pointer;
   font-weight: bold;
+  color: green;
 }

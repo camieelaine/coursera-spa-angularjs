@@ -1,0 +1,18 @@
+<a ui-sref="home">Home</a> &lt; <a ui-sref="categories">Categories</a> &lt;<span>Items for this category</span>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Description</strong></td>
+      <td><strong>Price</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in $ctrl.category">
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.price_large }}</td>
+    </tr>
+  </tbody>
+</table>
