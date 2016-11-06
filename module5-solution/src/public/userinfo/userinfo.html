@@ -7,17 +7,17 @@
         <span class="pull-right">Last name:</span><br>
         <span class="pull-right">Email:</span><br>
         <span class="pull-right">Phone number:</span>
-      </div>  
+      </div>
       <div class="col-xs-6">
         {{ userInfoCtrl.userInfo.firstName }}<br>
         {{ userInfoCtrl.userInfo.lastName }}<br>
         {{ userInfoCtrl.userInfo.email }}<br>
         {{ userInfoCtrl.userInfo.phoneNumber }}<br>
       </div>
-    </div>  
+    </div>
     <h3 id="favMenuItem" class="text-center">
-      Favourite Menu Item:  
-    </h3>    
+      Favorite Menu Item:  
+    </h3>
     <menu-item menu-item="userInfoCtrl.userInfo.favMenuItemValue"></menu-item>
   </div>
   <div id="userInfoEmpty" ng-if="!userInfoCtrl.isRegistered()" class="text-center">

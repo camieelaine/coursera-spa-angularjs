@@ -1,25 +1,25 @@
 <div class="container">
   <h2 class="text-center" id="signUpTitle">Register</h2>
   <form name='signUpForm' id='signUpForm' novalidate>
-    <input type="text" 
+    <input type="text"
           name="firstname"
           placeholder="First Name..."
           ng-model="signUpCtrl.user.firstName"
           required
-          > 
+          >
     <div ng-if="signUpForm.firstname.$invalid && signUpForm.firstname.$touched">
       First name is required
     </div>
-    <input type="text" 
+    <input type="text"
           name="lastname"
           placeholder="Last Name..."
           ng-model="signUpCtrl.user.lastName"
           required
-          > 
+          >
     <div ng-if="signUpForm.lastname.$invalid && signUpForm.lastname.$touched">
       Last name is required
     </div>
-    <input type="email" 
+    <input type="email"
           name="email"
           placeholder="Email..."
           ng-model="signUpCtrl.user.email"
@@ -28,31 +28,31 @@
     <div ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
       Must be a valid email address: handle@domain format
     </div>
-    <input type="text" 
+    <input type="text"
           name="phonenumber"
           pattern="(\d{3})-(\d{3})-(\d{4})"
           placeholder="Phone ###-###-####"
           ng-model="signUpCtrl.user.phoneNumber"
           required
-          > 
+          >
     <div ng-if="signUpForm.phonenumber.$invalid && signUpForm.phonenumber.$touched">
       Phone must be in the format ###-###-####
     </div>
-    <input type="text" 
+    <input type="text"
           name="favmenuitem"
-          placeholder="Favourite Menu item number..."
+          placeholder="Favorite Menu item number..."
           ng-model="signUpCtrl.user.favMenuItem"
           required
           menu-item-validator
           ng-model-options="{ debounce: 300 }"
           >
     <div ng-if="signUpForm.favmenuitem.$error.required && signUpForm.favmenuitem.$touched">
-      Favourite menu item is required
+      Favorite menu item is required
     </div>
     <div ng-if="signUpForm.favmenuitem.$error.exists && signUpForm.favmenuitem.$touched">
       No such menu number exists
     </div>
-    <button class="btn btn-primary" 
+    <button class="btn btn-primary"
             ng-disabled="signUpForm.$invalid || signUpForm.$pending"
             ng-click="signUpCtrl.onSignUp();"
             >
