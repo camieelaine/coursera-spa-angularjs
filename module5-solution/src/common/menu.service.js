@@ -1,34 +1,43 @@
-(function () {
-"use strict";
+(function() {
+  "use strict";
 
-angular.module('common')
-.service('MenuService', MenuService);
+  angular.module('common')
+  .service('MenuService', MenuService);
 
 
-MenuService.$inject = ['$http', 'ApiPath'];
-function MenuService($http, ApiPath) {
-  var service = this;
+  MenuService.$inject = ['$http', 'ApiPath'];
+  function MenuService($http, ApiPath) {
+    var service = this;
 
-  service.getCategories = function () {
-    return $http.get(ApiPath + '/categories.json').then(function (response) {
+    function unwrap(response) {
       return response.data;
-    });
-  };
-
-
-  service.getMenuItems = function (category) {
-    var config = {};
-    if (category) {
-      config.params = {'category': category};
     }
 
-    return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
-      return response.data;
-    });
-  };
-
-}
+    service.getCategories = function() {
+      return $http.get(ApiPath + '/categories.json').then(unwrap);
+    };
 
 
+    service.getMenuItems = function(category) {
+      var config = {};
+      if (category) {
+        config.params = {'category': category};
+      }
 
+      return $http.get(ApiPath + '/menu_items.json', config).then(unwrap);
+    };
+
+    service.getMenuItem = function(menuItem) {
+      return $http.get(ApiPath + '/menu_items/' + menuItem + '.json').then(unwrap);
+    };
+
+    service.menuItemExists = function(menuItem) {
+      return service.getMenuItem(menuItem)
+                    .then(function(response) {
+                      return true;
+                    }, function(error) {
+                      return false;
+                    });
+    };
+  }
 })();
