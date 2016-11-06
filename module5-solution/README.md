@@ -1,1 +1,0 @@
-Solution to the fifth week assignment on Angular course
